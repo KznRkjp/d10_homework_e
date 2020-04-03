@@ -8,21 +8,16 @@ def index(request):
 
     if request.method == 'GET':
         try:
-            #print(58*'*')
             manufacturer_value = request.GET['manufacturer']
-            #print('MAN PASS',58*'*')
             model_value = request.GET['model']
             production_year = request.GET['year']
-            #year_value = request.GET['year']
-            print(manufacturer_value, model_value, production_year)
-
 
             cars = Car.objects.filter(
                 Q(manufacturer__id = manufacturer_value)&
                 Q(models_type__id = model_value)&
                 Q(production_year__id = production_year))
 
-        #k = request.GET['man']
+
         except Exception as e:
             print('exception')
             print(e)
